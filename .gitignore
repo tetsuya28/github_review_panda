@@ -1,0 +1,9 @@
+.vscode
+.env
+bin/main
+lambda.zip
+.terraform
+*tfstate*
+*.tfvars
+env/*.yml
+.serverless
