@@ -23,6 +23,6 @@ package:
 functions:
   slack-notification:
     events:
-      - schedule: ${opt:cron, 'cron(0 0,8 * * ? *)'}
+      - schedule: ${opt:cron, 'cron(0 0,8 ? * MON-FRI *)'}
     handler: bin/main
     environment: ${self:custom.environment.${self:provider.stage}}

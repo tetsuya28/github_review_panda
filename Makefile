@@ -1,5 +1,5 @@
 PROFILE ?= default
-CRON ?= cron(0 0,8 * * ? *)
+CRON ?= cron(0 0,8 ? * MON-FRI *)
 
 deploy-prod: build
 	sls deploy --stage prod --profile $(PROFILE) --cron "$(CRON)"
