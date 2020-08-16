@@ -15,10 +15,10 @@ custom:
     stg: ${file(env/stg.yml)}
 
 package:
- exclude:
-   - ./**
- include:
-   - ./bin/**
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
 
 functions:
   slack-notification:

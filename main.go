@@ -59,12 +59,12 @@ func handler() error {
 		wg.Add(1)
 		tmpLabel := l
 		go func() {
+			defer wg.Done()
 			i, err := getIssueByLabels(c.RepositoryOwner, c.RepositoryName, c.GithubToken, tmpLabel)
 			if err != nil {
 				log.Fatal(err)
 			}
 			issues = append(issues, i...)
-			wg.Done()
 		}()
 	}
 
@@ -104,6 +104,9 @@ func getIssueByLabels(repoOwner, repoName, githubToken string, labelsName string
 
 	var issues []githubIssueResponse
 	err = json.Unmarshal([]byte(byteArray), &issues)
+	if err != nil {
+		return []githubIssueResponse{}, err
+	}
 
 	return issues, nil
 }
